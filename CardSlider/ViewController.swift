@@ -25,10 +25,20 @@ class ViewController: UIViewController {
         // 1. create a deck of cards
         // 20 cards for demonstrational purposes - once the cards run out, just re-run the project to start over
         // of course, you could always add new cards to self.cards and call layoutCards() again
-        for _ in 1...20 {
-            let card = ImageCard(frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 60, height: self.view.frame.height * 0.6))
-            cards.append(card)
-        }
+        
+        let curiosityCard = ImageCard(frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 60, height: self.view.frame.height * 0.6), image: #imageLiteral(resourceName: "curiosity_head"), name: "Curiosity", description: "I truly believe the moon landing was faked by the government")
+        
+        let spiritCard = ImageCard(frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 60, height: self.view.frame.height * 0.6), image: #imageLiteral(resourceName: "spirit_sexy"), name: "Spirit", description: "I'm really just on here to get laid...")
+        
+        let opportunityCard = ImageCard(frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 60, height: self.view.frame.height * 0.6), image: #imageLiteral(resourceName: "opportunity_weird"), name: "Opportunity", description: "I like a lot of things you probably haven't heard of.")
+        
+        
+
+        cards.append(curiosityCard)
+        cards.append(spiritCard)
+        cards.append(opportunityCard)
+        
+        
         
         // 2. layout the first 4 cards for the user
         layoutCards()
@@ -320,7 +330,7 @@ extension ViewController {
         
         // title label
         let titleLabel = UILabel()
-        titleLabel.text = "How do you like\nthis one?"
+        titleLabel.text = "Choose a rover\n to fuck!"
         titleLabel.numberOfLines = 2
         titleLabel.font = UIFont(name: "AvenirNext-Bold", size: 19)
         titleLabel.textColor = UIColor(red: 83/255, green: 98/255, blue: 196/255, alpha: 1.0)
