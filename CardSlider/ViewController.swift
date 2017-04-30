@@ -8,10 +8,16 @@
 
 import UIKit
 
+//container to hold the Matches array
+struct Matches{
+    static var matches = [String]()
+}
+
 class ViewController: UIViewController {
     
     /// Data structure for custom cards - in this example, we're using an array of ImageCards
     var cards = [ImageCard]()
+    /// var matches = [String]()
     /// The emojis on the sides are simply part of a view that sits ontop of everything else,
     /// but this overlay view is non-interactive so any touch events are passed on to the next receivers.
     var emojiOptionsOverlay: EmojiOptionsOverlay!
@@ -43,9 +49,15 @@ class ViewController: UIViewController {
         // 2. layout the first 4 cards for the user
         layoutCards()
         
+        let reactButton = UIButton()
+        reactButton.frame = CGRect(x: (self.view.frame.width / 2) - 60, y: self.view.frame.height - 70, width: 120, height: 50)
+        self.view.addSubview(reactButton)
+        reactButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showChatScreen)))
+        
         // 3. set up the (non-interactive) emoji options overlay
         emojiOptionsOverlay = EmojiOptionsOverlay(frame: self.view.frame)
         self.view.addSubview(emojiOptionsOverlay)
+        
     }
     
     /// Scale and alpha of successive cards visible to the user
@@ -178,6 +190,10 @@ class ViewController: UIViewController {
         case .changed:
             cardAttachmentBehavior.anchorPoint = panLocationInView
             if cards[0].center.x > (self.view.center.x + requiredOffsetFromCenter) {
+                
+                //add name of this card to matches list
+                Matches.matches.append(cards[0].getCardName())
+                
                 if cards[0].center.y < (self.view.center.y - optionLength) {
                     cards[0].showOptionLabel(option: .like1)
                     emojiOptionsOverlay.showEmoji(for: .like1)
@@ -307,6 +323,11 @@ class ViewController: UIViewController {
             })
         }
     }
+    
+    func showChatScreen(sender: UIButton){
+        let chatViewController: ChatViewController = ChatViewController()
+        
+        self.present(chatViewController, animated: true, completion: nil)    }
 }
 
 // MARK: - Unrelated to cards logic code
@@ -340,12 +361,16 @@ extension ViewController {
         
         // REACT
         let reactLabel = UILabel()
-        reactLabel.text = "REACT"
+        reactLabel.text = "CHAT"
         reactLabel.font = UIFont(name: "AvenirNextCondensed-Heavy", size: 28)
         reactLabel.textColor = UIColor(red: 54/255, green: 72/255, blue: 149/255, alpha: 1.0)
         reactLabel.textAlignment = .center
         reactLabel.frame = CGRect(x: (self.view.frame.width / 2) - 60, y: self.view.frame.height - 70, width: 120, height: 50)
         self.view.addSubview(reactLabel)
+        
+        
+        
+        
         
         // <- ☹️
         let frownArrowImageView = UIImageView(image: UIImage(named: "frown_arrow"))

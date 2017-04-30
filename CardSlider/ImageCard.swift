@@ -10,8 +10,12 @@ import UIKit
 
 class ImageCard: CardView {
     
+    var cardName: String?
+    
     init(frame: CGRect, image: UIImage, name: String, description: String) {
         super.init(frame: frame)
+        
+        self.cardName = name
         
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
@@ -68,9 +72,13 @@ class ImageCard: CardView {
         
         
     }
+    func getCardName() -> String{
+        return self.cardName!
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         
         let imageView = UIImageView(image: UIImage(named: "dummy_image"))
         imageView.contentMode = .scaleAspectFill
