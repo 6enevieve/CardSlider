@@ -36,12 +36,12 @@ class ImageCard: CardView {
         // actual text 1
         let textContent1 = UITextView()
         textContent1.text = name
-        textContent1.backgroundColor = UIColor(red: 67/255, green: 79/255, blue: 182/255, alpha: 1.0)
+        textContent1.backgroundColor = UIColor(red: 67/255, green: 79/255, blue: 182/255, alpha: 0)
         textContent1.layer.cornerRadius = 12
         textContent1.font = UIFont(name: "AvenirNext-Bold", size: 12)
         textContent1.layer.masksToBounds = true
         textContent1.textAlignment = .justified
-        textContent1.frame = CGRect(x: 9, y: imageView.frame.maxY + 18, width: 120, height: 24)
+        textContent1.frame = CGRect(x: 12, y: imageView.frame.maxY + 11, width: 120, height: 24)
         self.addSubview(textContent1)
         
         // text box 2
@@ -57,12 +57,12 @@ class ImageCard: CardView {
         // actual text 2
         let textContent2 = UITextView()
         textContent2.text = description
-        textContent2.backgroundColor = UIColor(red: 67/255, green: 79/255, blue: 182/255, alpha: 1.0)
+        textContent2.backgroundColor = UIColor(red: 67/255, green: 79/255, blue: 182/255, alpha: 0)
         textContent2.layer.cornerRadius = 12
         textContent2.font = UIFont(name: "AvenirNext-Bold", size: 12)
         textContent2.layer.masksToBounds = true
         textContent2.textAlignment = .justified
-        textContent2.frame = CGRect(x: 9, y: textBox1.frame.maxY + 10, width: 290, height: 38)
+        textContent2.frame = CGRect(x: 9, y: textBox1.frame.maxY + 6, width: 290, height: 38)
         self.addSubview(textContent2)
  
         
